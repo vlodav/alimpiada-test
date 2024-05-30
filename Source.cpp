@@ -1,32 +1,17 @@
-#include<iostream>
+#include <iostream>
+#include <cmath>
 using namespace std;
-int main()
-{
-	int N = 0, M = 0;
-	cin >> N;
-	cin >> M;
-	int** arr = new int* [N];
-	for (int i = 0; i < N; i++)
-	{
-		arr[i] = new int[M];
-	}
-	for (int i = 0; i < N; i++)
-	{
-		for (int j = 0; j < M; j++)
-		{
-			cin >> arr[i][j];
+int main() {
+	int x0, y0, R, N;
+	cin >> x0 >> y0 >> R >> N;
+	int count = 0;
+	for (int i = 0; i < N; ++i) {
+		int x, y;
+		cin >> x >> y;
+		if (sqrt(pow(x - x0, 2) + pow(y - y0, 2)) > R) {
+			++count;
 		}
 	}
-	for (int i = 0; i < M; i++)
-	{
-		int max = arr[0][i];
-		for (int j = 0; j < N; j++)
-		{
-			if (max < arr[j][i])
-			{
-				max = arr[j][i];
-			}
-		}
-		cout << max << endl;
-	}
+	cout << count << endl;
+	return 0;
 }
