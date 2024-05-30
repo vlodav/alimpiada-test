@@ -1,26 +1,32 @@
-#include <iostream>
-#include <algorithm>
-#include <vector>
+#include<iostream>
 using namespace std;
-
-int main() {
-    vector<int> arr;
-    int num;
-    int count = 0;
-
-    while (arr.size() < 10) {
-        cin >> num;
-        arr.push_back(num);
-        count++;
-    }
-
-    auto result = minmax_element(arr.begin(), arr.end());
-    int a = 0;
-    for (int i = 0; i < 10; i++) {
-        if (arr[i] == *result.first || arr[i] == *result.second) {
-            a++;
-        }
-    }
-    cout<< a;
-    return 0;
+int main()
+{
+	int N = 0, M = 0;
+	cin >> N;
+	cin >> M;
+	int** arr = new int* [N];
+	for (int i = 0; i < N; i++)
+	{
+		arr[i] = new int[M];
+	}
+	for (int i = 0; i < N; i++)
+	{
+		for (int j = 0; j < M; j++)
+		{
+			cin >> arr[i][j];
+		}
+	}
+	for (int i = 0; i < M; i++)
+	{
+		int max = arr[0][i];
+		for (int j = 0; j < N; j++)
+		{
+			if (max < arr[j][i])
+			{
+				max = arr[j][i];
+			}
+		}
+		cout << max << endl;
+	}
 }
